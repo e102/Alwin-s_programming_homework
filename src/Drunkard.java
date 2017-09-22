@@ -3,7 +3,7 @@
  */
 public class Drunkard {
     public static void main(String[] args) {
-        randomwalker(10);
+        randomWalker(10);
         randomWalker(10, 10000);
     }
 
@@ -22,9 +22,17 @@ public class Drunkard {
         return directions[random_seed];
     }
 
-    public static double randomwalker(int distance) {
+    public static double randomWalker(int distance) {
         //Starting point is (0,0)
         Location position = new Location(0, 0);
+        position = randomWalk(distance, position);
+        double distanceWalked = computeDistance(position.x, position.y);
+        System.out.println("You walked " + distanceWalked + " in square distance");
+        return distanceWalked;
+    }
+
+    private static Location randomWalk(int distance, Location initial_location) {
+        Location position = initial_location;
         while (distance > 0) {
             getDirection();
             if (getDirection() == Direction.UP) {
@@ -42,15 +50,14 @@ public class Drunkard {
             System.out.println("Location = X:" + position.x + " Y:" + position.y);
             distance--;
         }
-        double randomwalker = computeDistance(position.x, position.y);
-        System.out.println("You walked " + randomwalker + " in square distance");
-        return randomwalker;
+
+        return position;
     }
 
     public static double randomWalker(int distance, int number_of_runs) {
         int total_distance = 0;
         while (number_of_runs > 0) {
-            total_distance += randomwalker(distance);
+            total_distance += randomWalker(distance);
             number_of_runs--;
         }
 
