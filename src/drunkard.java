@@ -39,7 +39,7 @@ public class drunkard {
             if (getDirection() == Direction.RIGHT) {
                 x++;
             }
-            printLocation(x, y);
+            System.out.println("Location = X:" + x + " Y:" + y);;
             distance--;
         }
         double randomwalker = computeDistance(x, y);
@@ -55,11 +55,6 @@ public class drunkard {
         }
 
         return total_distance / number_of_runs;
-    }
-
-
-    private static void printLocation(int x, int y) {
-        System.out.println("Location = X:" + x + " Y:" + y);
     }
 
     private static double computeDistance(int x, int y) {
