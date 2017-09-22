@@ -2,88 +2,99 @@
  * Created by I6113620 on 22-9-2017.
  */
 public class drunkard {
-        public static void main(String[] args) {
-           randomwalker(10);
-           RandomWalkers(10, 10000);
-        }
+    public static void main(String[] args) {
+        randomwalker(10);
+        randomWalker(10, 10000);
+    }
 
-        public static int getDirection() {
-            //This is an integer method that returns 1 or 2 or 3 or 4 (they correspond to the 4 directions)
-            return (int)(Math.random()*4 + 1);
-        }
+    private enum Direction {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT
+    }
 
-        public static double randomwalker (int N) {
-            //Starting point is (0,0)
+    public static Direction getDirection() {
+        //This method returns a direction because it's not made by a lobotomized chimp
+        Direction[] directions = Direction.values();
+        int random_seed = (int) (Math.random() * directions.length);
+
+        return directions[random_seed];
+    }
+
+    public static double randomwalker(int distance) {
+        //Starting point is (0,0)
+        int x = 0, y = 0;
+        while (distance > 0) {
+            getDirection();
+            if (getDirection() == Direction.UP) {
+                y++;
+            }
+            if (getDirection() == Direction.DOWN) {
+                y--;
+            }
+            if (getDirection() == Direction.LEFT) {
+                x--;
+            }
+            if (getDirection() == Direction.RIGHT) {
+                x++;
+            }
+            printLocation(x, y);
+            distance--;
+        }
+        double randomwalker = computeDistance(x, y);
+        System.out.println("You walked " + randomwalker + " in square distance");
+        return randomwalker;
+    }
+
+    public static void randomWalker(int N, int T) {
+        double totalDistance = 0;
+        double totalMean = 0;
+        double iteration = 0;
+        int NN = N;
+        int TT = T;
+        while (T > 0) {
             int x = 0, y = 0;
-            while ( N > 0) {
+            N = NN;
+            while (N > 0) {
                 getDirection();
-                if (getDirection() == 1) {
+                if (getDirection() == Direction.UP) {
                     y++;
                 }
-                if (getDirection() == 2) {
+                if (getDirection() == Direction.DOWN) {
                     y--;
                 }
-                if (getDirection() == 3) {
+                if (getDirection() == Direction.LEFT) {
                     x--;
                 }
-                if (getDirection() == 4) {
+                if (getDirection() == Direction.RIGHT) {
                     x++;
                 }
-                printLocation(x,y);
                 N--;
             }
-            double randomwalker = computeDistance(x,y);
-            System.out.println("You walked " + randomwalker + " in square distance");
-            return randomwalker;
-        }
-
-
-        public static void printLocation(int x, int y) {
-            System.out.println(x + "," + y);
-        }
-
-        public static double computeDistance(int x, int y) {
-            int squarex = x*x;
-            int squarey = y*y;
-            double computeDistance = (squarex + squarey);
-            return computeDistance;
-            //This method is double and should return the distance from (0,0), given (x,y)
-        }
-        public static void RandomWalkers(int N, int T) {
-            double totalDistance = 0;
-            double totalMean = 0;
-            double iteration =0;
-            int NN = N;
-            int TT = T;
-            while (T > 0) {
-                int x = 0, y = 0;
-                N = NN;
-                while (N > 0) {
-                    getDirection();
-                    if (getDirection() == 1) {
-                        y++;
-                    }
-                    if (getDirection() == 2) {
-                        y--;
-                    }
-                    if (getDirection() == 3) {
-                        x--;
-                    }
-                    if (getDirection() == 4) {
-                        x++;
-                    }
-                    N--;
-                }
-                iteration = computeDistance(x,y);
-                totalDistance = totalDistance + iteration;
-                T--;
-                if (T == 1){
+            iteration = computeDistance(x, y);
+            totalDistance = totalDistance + iteration;
+            T--;
+            if (T == 1) {
                 totalMean = totalDistance / TT;
                 System.out.println("The mean distance is " + totalMean);
 
             }
         }
-        }
+    }
+
+
+    public static void printLocation(int x, int y) {
+        System.out.println(x + "," + y);
+    }
+
+    public static double computeDistance(int x, int y) {
+        int squarex = x * x;
+        int squarey = y * y;
+        double computeDistance = (squarex + squarey);
+        return computeDistance;
+        //This method is double and should return the distance from (0,0), given (x,y)
+    }
 }
 
 
