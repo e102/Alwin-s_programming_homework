@@ -2,11 +2,6 @@
  * Created by I6113620 on 22-9-2017.
  */
 public class Drunkard {
-    public static void main(String[] args) {
-        System.out.println("random walker distance = " + randomWalker(10));
-        System.out.println("random walker repeated distance = "  + randomWalker(1000, 10000));
-    }
-
     private enum Direction {
         UP,
         DOWN,
