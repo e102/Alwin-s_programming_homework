@@ -14,7 +14,7 @@ public class drunkard {
         RIGHT
     }
 
-    public static Direction getDirection() {
+    private static Direction getDirection() {
         //This method returns a direction because it's not made by a lobotomized chimp
         Direction[] directions = Direction.values();
         int random_seed = (int) (Math.random() * directions.length);
@@ -84,16 +84,13 @@ public class drunkard {
     }
 
 
-    public static void printLocation(int x, int y) {
-        System.out.println(x + "," + y);
+    private static void printLocation(int x, int y) {
+        System.out.println("Location = X:" + x + " Y:" + y);
     }
 
-    public static double computeDistance(int x, int y) {
-        int squarex = x * x;
-        int squarey = y * y;
-        double computeDistance = (squarex + squarey);
-        return computeDistance;
-        //This method is double and should return the distance from (0,0), given (x,y)
+    //TODO: correct bad method. Distance from 0 0 to 10 10 is not 200 assuming you mesure the shortest distance. distance = sqrt(x^2 + y^2)
+    private static double computeDistance(int x, int y) {
+        return (Math.sqrt(x*x + y*y));
     }
 }
 
