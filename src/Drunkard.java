@@ -13,7 +13,6 @@ public class Drunkard {
         //This method returns a direction because it's not made by a lobotomized chimp
         Direction[] directions = Direction.values();
         int random_seed = (int) (Math.random() * directions.length);
-
         return directions[random_seed];
     }
 
@@ -27,18 +26,10 @@ public class Drunkard {
         Location position = initial_location;
         while (distance > 0) {
             getDirection();
-            if (getDirection() == Direction.UP) {
-                position.y++;
-            }
-            if (getDirection() == Direction.DOWN) {
-                position.y--;
-            }
-            if (getDirection() == Direction.LEFT) {
-                position.x--;
-            }
-            if (getDirection() == Direction.RIGHT) {
-                position.x++;
-            }
+            if (getDirection() == Direction.UP) { position.y++; }
+            if (getDirection() == Direction.DOWN) { position.y--; }
+            if (getDirection() == Direction.LEFT) { position.x--; }
+            if (getDirection() == Direction.RIGHT) { position.x++; }
             distance--;
         }
 
@@ -54,9 +45,7 @@ public class Drunkard {
         return total_distance / number_of_runs;
     }
 
-    private static double computeDistance(int x, int y) {
-        return (Math.sqrt(x * x + y * y));
-    }
+    private static double computeDistance(int x, int y) { return (Math.sqrt(x * x + y * y)); }
 }
 
 

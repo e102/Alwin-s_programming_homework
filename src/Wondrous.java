@@ -14,8 +14,6 @@ public class Wondrous {
         }
         System.out.println("The hailstone sequence of " + originalNumber + " requires " + numberOfSteps + " steps ");
     }
-
-
 }
 
 
