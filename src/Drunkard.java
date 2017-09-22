@@ -52,9 +52,8 @@ public class Drunkard {
 
     public static double randomWalker(int distance, int number_of_runs) {
         int total_distance = 0;
-        while (number_of_runs > 0) {
+        for (int runs_remaining = number_of_runs; runs_remaining > 0; runs_remaining--) {
             total_distance += randomWalker(distance);
-            number_of_runs--;
         }
 
         return total_distance / number_of_runs;
