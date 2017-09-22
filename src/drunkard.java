@@ -47,40 +47,15 @@ public class drunkard {
         return randomwalker;
     }
 
-    public static void randomWalker(int N, int T) {
-        double totalDistance = 0;
-        double totalMean = 0;
-        double iteration = 0;
-        int NN = N;
-        int TT = T;
-        while (T > 0) {
-            int x = 0, y = 0;
-            N = NN;
-            while (N > 0) {
-                getDirection();
-                if (getDirection() == Direction.UP) {
-                    y++;
-                }
-                if (getDirection() == Direction.DOWN) {
-                    y--;
-                }
-                if (getDirection() == Direction.LEFT) {
-                    x--;
-                }
-                if (getDirection() == Direction.RIGHT) {
-                    x++;
-                }
-                N--;
-            }
-            iteration = computeDistance(x, y);
-            totalDistance = totalDistance + iteration;
-            T--;
-            if (T == 1) {
-                totalMean = totalDistance / TT;
-                System.out.println("The mean distance is " + totalMean);
-
-            }
+    public static double randomWalkerMultiRunMean(int distance, int number_of_runs) {
+        int total_distance = 0;
+        while (number_of_runs > 0) {
+            total_distance += randomwalker(distance);
+            number_of_runs--;
         }
+
+        int mean_distance = total_distance / number_of_runs;
+        return mean_distance;
     }
 
 
