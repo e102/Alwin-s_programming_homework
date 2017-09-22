@@ -1,7 +1,7 @@
 /**
  * Created by I6113620 on 22-9-2017.
  */
-public class drunkard {
+public class Drunkard {
     public static void main(String[] args) {
         randomwalker(10);
         randomWalker(10, 10000);
@@ -24,25 +24,25 @@ public class drunkard {
 
     public static double randomwalker(int distance) {
         //Starting point is (0,0)
-        int x = 0, y = 0;
+        Location position = new Location(0, 0);
         while (distance > 0) {
             getDirection();
             if (getDirection() == Direction.UP) {
-                y++;
+                position.y++;
             }
             if (getDirection() == Direction.DOWN) {
-                y--;
+                position.y--;
             }
             if (getDirection() == Direction.LEFT) {
-                x--;
+                position.x--;
             }
             if (getDirection() == Direction.RIGHT) {
-                x++;
+                position.x++;
             }
-            System.out.println("Location = X:" + x + " Y:" + y);;
+            System.out.println("Location = X:" + position.x + " Y:" + position.y);
             distance--;
         }
-        double randomwalker = computeDistance(x, y);
+        double randomwalker = computeDistance(position.x, position.y);
         System.out.println("You walked " + randomwalker + " in square distance");
         return randomwalker;
     }
