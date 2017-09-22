@@ -3,8 +3,8 @@
  */
 public class Drunkard {
     public static void main(String[] args) {
-        randomWalker(10);
-        randomWalker(10, 10000);
+        System.out.println("random walker distance = " + randomWalker(10));
+        System.out.println("random walker repeated distance = "  + randomWalker(1000, 10000));
     }
 
     private enum Direction {
@@ -23,12 +23,9 @@ public class Drunkard {
     }
 
     public static double randomWalker(int distance) {
-        //Starting point is (0,0)
         Location position = new Location(0, 0);
         position = randomWalk(distance, position);
-        double distanceWalked = computeDistance(position.x, position.y);
-        System.out.println("You walked " + distanceWalked + " in square distance");
-        return distanceWalked;
+        return computeDistance(position.x, position.y);
     }
 
     private static Location randomWalk(int distance, Location initial_location) {
@@ -47,7 +44,6 @@ public class Drunkard {
             if (getDirection() == Direction.RIGHT) {
                 position.x++;
             }
-            System.out.println("Location = X:" + position.x + " Y:" + position.y);
             distance--;
         }
 
