@@ -47,15 +47,14 @@ public class drunkard {
         return randomwalker;
     }
 
-    public static double randomWalkerMultiRunMean(int distance, int number_of_runs) {
+    public static double randomWalker(int distance, int number_of_runs) {
         int total_distance = 0;
         while (number_of_runs > 0) {
             total_distance += randomwalker(distance);
             number_of_runs--;
         }
 
-        int mean_distance = total_distance / number_of_runs;
-        return mean_distance;
+        return total_distance / number_of_runs;
     }
 
 
