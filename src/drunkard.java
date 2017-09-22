@@ -88,9 +88,8 @@ public class drunkard {
         System.out.println("Location = X:" + x + " Y:" + y);
     }
 
-    //TODO: correct bad method. Distance from 0 0 to 10 10 is not 200 assuming you mesure the shortest distance. distance = sqrt(x^2 + y^2)
     private static double computeDistance(int x, int y) {
-        return (Math.sqrt(x*x + y*y));
+        return (Math.sqrt(x * x + y * y));
     }
 }
 
