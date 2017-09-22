@@ -3,21 +3,17 @@
  */
 
 public class Wondrous {
-    private static boolean isEven(int number) {
-        return (number % 2 == 0);
-    }
-
-    public static void printHailStones(int n) {
+    public static void printHailStones(int input) {
         int hailStoneSum = 0;
-        int originalNumber = n;
-        while (n != 1) {
-            if (isEven(n)) {
-                n = n / 2;
+        int originalNumber = input;
+        while (input != 1) {
+            if (input % 2 == 0) {
+                input = input / 2;
                 hailStoneSum++;
-                System.out.print(n + " ");
+                System.out.print(input + " ");
             } else {
-                n = (n * 3) + 1;
-                System.out.print(n + " ");
+                input = (input * 3) + 1;
+                System.out.print(input + " ");
                 hailStoneSum++;
             }
         }
